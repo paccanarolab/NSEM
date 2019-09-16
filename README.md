@@ -37,7 +37,7 @@ Brief description of the files in the repository:
 
     ○ max_iters, maximum number of iterations.
 
-    ○ The L2- and L1- regularization parameters are passed to the method Mslim.train(L2beta, L1lambda).
+    ○ The L2- and L1- regularization parameters are passed to the method Nsem.train(L2beta, L1lambda).
 The script generates as output: the Hit Rate and the Average Reciprocal Hit Rate, at the desired topN, as well as the trained matrix W.
 
 ●	We also provide a sample training matrix (train.mat) and testing matrix (test.mat) retrieved from the SLIM downloads website. They were generated from the ML100K dataset so the results should be similar to the ones described in the paper. 
