@@ -11,7 +11,7 @@ the SupplementaryMaterial.pdf file located in this folder.
 
 import argparse
 from scipy import sparse
-import NSEM
+import Nsem
 
 def read_csr_data(filename):    
 
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     print("Done...")
 
     # Create an instance of the class Uslim with our default parameters
-    mSLIM = NSEM.Mslim(Y, YTest, 1e-2, 0.01, 1000, 10000)
+    nSEM = Nsem.Nsem(Y, YTest, 1e-2, 0.01, 1000, 10000)
 
     # Extract the regularization parameters from command line
     l2Beta = float(args.beta)
@@ -98,13 +98,13 @@ if __name__ == '__main__':
 
     # Train the model and save it in W
     print("Training model...")
-    W = mSLIM.train(l2Beta,l1Lambda)
+    W = nSEM.train(l2Beta,l1Lambda)
     print("Done...")
 
     # Calculate the Hit Rate (HR) and Average Reciprocal Hit Rate (ARHR)
     print("Calculating HR and ARHR...")
-    hitRate = mSLIM.hit_rate(W,topN)
-    avgRecHitRate = mSLIM.avg_rec_hit_rate(W, topN)
+    hitRate = nSEM.hit_rate(W,topN)
+    avgRecHitRate = nSEM.avg_rec_hit_rate(W, topN)
 
     # Printing statistics...
     print("Statistics for model trained with L2Beta: {}, L2Lambda: {}.".format(args.beta,args.lamb))
@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
     # Dumping results in a text file
     print("\nDumping results...")
-    with open("M-SLIM_BETA_{}_LAMBDA_{}_TOP_{}.txt".format(args.beta,args.lamb,args.topn),"w") as out:
+    with open("NSEM_BETA_{}_LAMBDA_{}_TOP_{}.txt".format(args.beta,args.lamb,args.topn),"w") as out:
         out.write("Statistics for model trained with L2Beta: {}, L2Lambda: {}.".format(args.beta,args.lamb))
         out.write("Hit Rate at top_{}: {}".format(args.topn, str(hitRate)))
         out.write("Average Reciprocal Hit Rate at top_{}: {}".format(args.topn, str(avgRecHitRate)))

@@ -7,7 +7,7 @@ from scipy.sparse import (spdiags, SparseEfficiencyWarning, csc_matrix,
     csr_matrix, isspmatrix, dok_matrix, lil_matrix, bsr_matrix)
 warnings.simplefilter('ignore',SparseEfficiencyWarning)
 
-class NSEM:
+class Nsem:
     def __init__(self, Ytrain, Ytest, tolX = 1e-2, var = 0.01, max_iters = 1000, gamma = 10000):
         self.tolX = tolX
         self.variance = var
